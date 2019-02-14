@@ -11,13 +11,15 @@ import { RestService } from './services/rest.service';
 import { ShowJsonComponent } from './show-json/show-json.component';
 import { FilterdataPipe } from './filterdata.pipe';
 import { FormsModule } from '@angular/forms';
+import { MasterMenuComponent } from './master-menu/master-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShowJsonComponent,
     FilterdataPipe,
-    UserListComponent
+    UserListComponent,
+    MasterMenuComponent
   ],
   imports: [
     BrowserModule,
