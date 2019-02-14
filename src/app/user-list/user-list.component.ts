@@ -3,7 +3,7 @@ import { Users } from '../model/users';
 import { RestService } from '../services/rest.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { ShowJsonComponent } from '../show-json/show-json.component';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -18,6 +18,9 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    setInterval(() => {
+      this.getUser();
+    }, 10000)
   }
   getUser() {
     this.rest.fetch("https://hn.algolia.com/api/v1/search_by_date?tags=story")
@@ -26,12 +29,12 @@ export class UserListComponent implements OnInit {
         console.log(this.userItem);
       });
   }
-  showJson(user:Users) {
+  showJson(user: Users) {
     const initialState = {
       user
     };
 
-    this.bsModalref = this.bsmodalservice.show(ShowJsonComponent, {initialState});
+    this.bsModalref = this.bsmodalservice.show(ShowJsonComponent, { initialState });
     this.bsModalref.content.closeBtnName = 'Close';
     console.log(initialState);
   }
